@@ -58,9 +58,10 @@ mongodb 的一个同步工具，具备将一个数据源上的数据，同步到
 
 # 运行方式
 ```
-    python src/python/main.py conf/xxx.conf logs/xxx.log [is-debug]
+    python src/python/main.py conf/example.conf logs/example.log [is-debug]
     is-debug: 取值为 true，false, 为 true 日志会打印 debug 的日志，否则关闭 debug 日志
 ```
 
 # Change Log
     [2014-12.01]: 支持了多线程，解决 源和目的 速度不一致的问题，当目的端较慢，采用多线程来提高性能；
+    [2024-07-31]: 修改了一些地方以適用於新版本的 MongoDB

@@ -75,7 +75,9 @@ def updateOptTime(filename, repl, timeStamp):
 
             if repl not in json_opttime:
                 json_opttime[repl] = {}
-            json_opttime[repl].update({"time": timeStamp['ts'].time, "inc": timeStamp['ts'].inc})
+                
+            json_opttime[repl].update({"time": timeStamp.time, "inc": timeStamp.inc})
+            
                 
             f.write(json.dumps(json_opttime))
     except Exception:
