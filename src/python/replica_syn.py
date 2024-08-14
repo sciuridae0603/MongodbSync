@@ -75,10 +75,9 @@ def updateOptTime(filename, repl, timeStamp):
 
             if repl not in json_opttime:
                 json_opttime[repl] = {}
-                
+
             json_opttime[repl].update({"time": timeStamp.time, "inc": timeStamp.inc})
-            
-                
+
             f.write(json.dumps(json_opttime))
     except Exception:
         logging.error("update file opttime exception: %s" % (traceback.format_exc()))
@@ -157,7 +156,6 @@ class ReplicaSynchronizer(threading.Thread):
                 unique=index.get("unique", False),
                 dropDups=index.get("dropDups", False),
                 background=index.get("background", False),
-                
             )
 
     def _ensureCollection(self, dbname, collname, copy_data=False):
@@ -326,7 +324,8 @@ class ReplicaSynchronizer(threading.Thread):
             for member in members:
                 role = member.get("stateStr")
                 if role == "PRIMARY":
-                    ts = member.get("optime")
+                    optime = member.get("optime")
+                    ts = optime["ts"]
                     logging.info("get primary optime")
                     return ts
 
